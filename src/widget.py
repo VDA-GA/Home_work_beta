@@ -16,3 +16,14 @@ def do_masks_number_card_or_account(input_number: str) -> str:
     else:
         mask = do_mask_cart_number(input_number[(len(input_number) - 16): -1])
         return input_number[0: (len(input_number) - 16)] + mask
+
+
+def get_data_from_time(str_time: str) -> str:
+    """
+    Принимает строку в виде 2018-07-11T02:26:18.671407
+    возвращает дату в виде 11.07.2018
+    :param str_time: исходная строка
+    :return: дата
+    """
+    data = str_time[8:10] + "." + str_time[5:7] + "." + str_time[0:4]
+    return data

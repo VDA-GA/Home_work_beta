@@ -9,7 +9,7 @@ def do_mask_cart_number(cart_number: int | str) -> str:
     """
 
     cart_number = str(cart_number)
-    return cart_number[0:4] + " " + cart_number[3:5] + "**" + " **** " + cart_number[12:16]
+    return cart_number[0:4] + " " + cart_number[4:6] + "**" + " **** " + cart_number[12:16]
 
 
 def do_mask_account_number(account_number: int | str) -> str:
@@ -20,7 +20,7 @@ def do_mask_account_number(account_number: int | str) -> str:
     """
 
     account_number = str(account_number)
-    return "**" + account_number[-1:-5:-1]
+    return "**" + account_number[16::]
 
 
 def make_dict_content_folder(path: str = os.getcwd(), req: bool = False) -> dict:

@@ -1,4 +1,4 @@
-from src.masks import do_mask_cart_number, do_mask_account_number, make_dict_content_folder
+from src.masks import do_mask_account_number, do_mask_cart_number, make_dict_content_folder
 
 
 def test_do_mask_cart_number_for_str():

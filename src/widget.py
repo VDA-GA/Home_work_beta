@@ -29,6 +29,3 @@ def get_data_from_time(str_time: str) -> str:
     """
     data = str_time[8:10] + "." + str_time[5:7] + "." + str_time[0:4]
     return data
-
-
-print(do_masks_number_card_or_account("Счет 12345678901234567890"))

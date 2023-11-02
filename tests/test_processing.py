@@ -51,6 +51,7 @@ def test_sorted_list_on_date_increasing_default(list_data):
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
 
+
 def test_sorted_list_on_date_decreasing(list_data):
     assert sorted_list_on_date(list_data, False) == [
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},

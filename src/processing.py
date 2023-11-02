@@ -26,7 +26,4 @@ def sorted_list_on_date(list_data: List[dict], order: bool = True) -> List[dict]
     :return: отфильтрованный список словарей по значению ключа state
     """
 
-    if order:
-        return sorted(list_data, key=lambda x: x["date"], reverse=True)
-    else:
-        return sorted(list_data, key=lambda x: x["date"])
+    return sorted(list_data, key=lambda x: x["date"], reverse=order)

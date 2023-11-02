@@ -13,7 +13,7 @@ def test_do_mask_account_number_str():
     assert do_mask_account_number('01234567890123456789') == '**6789'
 
 
-def test_do_mask_account_number_str():
+def test_do_mask_account_number_int():
     assert do_mask_account_number(12345678901234567890) == '**7890'
 
 

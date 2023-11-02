@@ -10,11 +10,13 @@ def do_masks_number_card_or_account(input_number: str) -> str:
     :return: Маскированный по правилу номер
     """
 
-    if "счет" or "счёт" in input_number.lower():
-        mask = do_mask_account_number(input_number[(len(input_number) - 20): -1])
+    if "счет" in input_number.lower():
+        mask = do_mask_account_number(input_number[(len(input_number) - 20):])
         return input_number[0: (len(input_number) - 20)] + mask
     else:
-        mask = do_mask_cart_number(input_number[(len(input_number) - 16): -1])
+        mask = do_mask_cart_number(input_number[(len(input_number) - 16):])
+        print(input_number[(len(input_number) - 16):])
+
         return input_number[0: (len(input_number) - 16)] + mask
 
 
@@ -27,3 +29,6 @@ def get_data_from_time(str_time: str) -> str:
     """
     data = str_time[8:10] + "." + str_time[5:7] + "." + str_time[0:4]
     return data
+
+
+print(do_masks_number_card_or_account("Счет 12345678901234567890"))

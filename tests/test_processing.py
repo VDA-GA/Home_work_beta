@@ -28,7 +28,7 @@ def test_filter_dict_without_state(list_data):
 
 
 def test_filter_dict_with_canceled(list_data):
-    assert filter_dict(list_data, 'CANCELED') == [
+    assert filter_dict(list_data, "CANCELED") == [
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]

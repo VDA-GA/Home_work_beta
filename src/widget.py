@@ -11,13 +11,13 @@ def do_masks_number_card_or_account(input_number: str) -> str:
     """
 
     if "счет" in input_number.lower():
-        mask = do_mask_account_number(input_number[(len(input_number) - 20):])
-        return input_number[0: (len(input_number) - 20)] + mask
+        mask = do_mask_account_number(input_number[(len(input_number) - 20) :])
+        return input_number[0 : (len(input_number) - 20)] + mask
     else:
-        mask = do_mask_cart_number(input_number[(len(input_number) - 16):])
-        print(input_number[(len(input_number) - 16):])
+        mask = do_mask_cart_number(input_number[(len(input_number) - 16) :])
+        print(input_number[(len(input_number) - 16) :])
 
-        return input_number[0: (len(input_number) - 16)] + mask
+        return input_number[0 : (len(input_number) - 16)] + mask
 
 
 def get_data_from_time(str_time: str) -> str:

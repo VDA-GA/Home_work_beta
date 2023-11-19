@@ -22,26 +22,20 @@ def log(filename: Optional[str] = None) -> Any:
     def wrapper(func: Callable) -> Callable:
         @wraps(func)
         def inner(*args: Any, **kwargs: Any) -> Any:
+            time_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             try:
                 result = func(*args, **kwargs)
-                if filename:
-                    with open(filename, "a", encoding="utf8") as file:
-                        file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {func.__name__} ok \n")
-                else:
-                    print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {func.__name__} ok \n")
-                return result
+                log_message = f"{time_now} {func.__name__} ok \n"
             except Exception as err:
-                if filename:
-                    with open(filename, "a", encoding="utf8") as file:
-                        file.write(
-                            f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {func.__name__} error: "
-                            f"{err}. Inputs: {args}, {kwargs} \n"
-                        )
-                else:
-                    print(
-                        f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} {func.__name__} "
-                        f"error: {err}. Inputs: {args}, {kwargs} \n"
-                    )
+                log_message = f"{time_now} {func.__name__} error: {err}. Inputs: {args}, {kwargs} \n"
+                result = None
+
+            if filename:
+                with open(filename, "a", encoding="utf8") as file:
+                    file.write(log_message)
+            else:
+                print(log_message)
+            return result
 
         return inner
 

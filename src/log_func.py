@@ -1,7 +1,9 @@
 import logging
 
 
-def logging_function(name_module:str) -> None:
+def logging_function(name_module: str) -> None:
+    """Функция инициализирующая логгер
+    :param name_module: имя регистратора"""
     # Инициализация логгера (конкретного регистратора):
     logger = logging.getLogger(name_module)
     # Установка уровня логгирования:

@@ -1,5 +1,5 @@
 import logging
-from log_func import logging_function
+from src.log_func import logging_function
 
 logging_function('HW')
 logger = logging.getLogger('HW.masks')

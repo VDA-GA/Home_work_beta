@@ -1,7 +1,7 @@
 import json
 import logging
 from typing import Any
-from log_func import logging_function
+from src.log_func import logging_function
 
 logging_function('HW')
 logger = logging.getLogger('HW.utils')

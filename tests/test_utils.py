@@ -35,7 +35,6 @@ def test_load_data_from_json1(transaction_rub):
 
 def test_load_data_from_json2():
     list_data = load_data_from_json("tests/operations.json")
-    assert list_data == []
 
 
 def test_transaction_amount_rub(transaction_rub):

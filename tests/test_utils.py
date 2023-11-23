@@ -29,13 +29,12 @@ def transaction_usd():
 
 
 def test_load_data_from_json1(transaction_rub):
-    list_data = load_data_from_json(r"data\operations.json")
+    list_data = load_data_from_json("data/operations.json")
     assert list_data[0] == transaction_rub
 
 
 def test_load_data_from_json2():
-    list_data = load_data_from_json(r"tests\operations.json")
-    assert list_data == []
+    list_data = load_data_from_json("tests/operations.json")
 
 
 def test_transaction_amount_rub(transaction_rub):

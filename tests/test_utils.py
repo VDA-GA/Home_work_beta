@@ -1,5 +1,5 @@
 import pytest
-from src.utils import load_data_from_json, transaction_amount_rub
+from src.utils import load_data_from_json, transaction_amount_rub, load_data_from_csv, load_data_from_xlsx
 
 
 @pytest.fixture
@@ -35,6 +35,7 @@ def test_load_data_from_json1(transaction_rub):
 
 def test_load_data_from_json2():
     list_data = load_data_from_json("tests/operations.json")
+    assert list_data == []
 
 
 def test_transaction_amount_rub(transaction_rub):
@@ -44,3 +45,23 @@ def test_transaction_amount_rub(transaction_rub):
 def test_transaction_amount_usd(transaction_usd):
     with pytest.raises(ValueError):
         transaction_amount_rub(transaction_usd)
+
+
+def test_load_data_from_csv():
+    df_load = load_data_from_csv("data/transactions.csv")
+    assert df_load.shape == (1000, 9)
+
+
+def test_load_data_from_csv1():
+    df_load = load_data_from_csv("data/transactions.csv")
+    assert df_load.id[0] == 650703
+
+
+def test_load_data_from_xlsx():
+    df_load = load_data_from_xlsx("data/transactions_excel.xlsx")
+    assert df_load.shape == (1000, 9)
+
+
+def test_load_data_from_xlsx1():
+    df_load = load_data_from_xlsx("data/transactions_excel.xlsx")
+    assert df_load.id[0] == 650703

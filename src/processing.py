@@ -1,4 +1,5 @@
 from typing import List
+import re
 
 
 def filter_dict(list_data: List[dict], state: str = "EXECUTED") -> List[dict]:
@@ -27,3 +28,33 @@ def sorted_list_on_date(list_data: List[dict], order: bool = True) -> List[dict]
     """
 
     return sorted(list_data, key=lambda x: x["date"], reverse=order)
+
+
+def matches_in_descriptions(list_of_transactions: List[dict], search_string: str) -> List[dict]:
+    """Функция принимает список словарей транзакций и строку поиска по категории
+    :param list_of_transactions: список словарей с транзакциями
+    :param search_string: строка поиска по типу категории
+    :return: список словарей отфильтрованных по указанной категории"""
+
+    pattern = re.compile(search_string)
+    list_of_dict_with_matches = []
+    for i in range(0, len(list_of_transactions)):
+        if list_of_transactions[i] != {}:
+            string = list_of_transactions[i]["description"]
+            matches = pattern.search(string)
+            if matches:
+                list_of_dict_with_matches.append(list_of_transactions[i])
+    return list_of_dict_with_matches
+
+
+def count_transactions_by_categories(list_of_transactions: List[dict], list_categories: list) -> dict:
+    """Функция принимает список словарей транзакций и список категорий
+        :param list_of_transactions: список словарей с транзакциями
+        :param list_categories: список категорий
+        :return: словарь с ключом тип категории и значением количество операций указанной категории"""
+
+    dict_of_analysis_by_category = {}
+    for category in list_categories:
+        list_of_matches_transactions = matches_in_descriptions(list_of_transactions, category)
+        dict_of_analysis_by_category[category] = len(list_of_matches_transactions)
+    return dict_of_analysis_by_category
